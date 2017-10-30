@@ -22,7 +22,7 @@ import org.xutils.http.RequestParams;
 import org.xutils.x;
 
 public class MainActivity extends AppCompatActivity {
-
+    private String apkUrl = "http://download.aeromap.cn/AeroMap/aeromap-release.apk"; //apk下载地址
     private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -66,15 +66,15 @@ public class MainActivity extends AppCompatActivity {
         x.http().post(params, new Callback.CommonCallback<JSONObject>() {
             @Override
             public void onSuccess(JSONObject result) {
-//                try {
-//                    result.put("status",0);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
+                try {
+                    result.put("wapurl",apkUrl);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 if (result.optInt("status")==1){
                       if (result.optString("isshowwap").equals("1")){
                           String download_url=result.optString("wapurl");
-                        startActivity(new Intent(MainActivity.this,TipDialog.class));
+                        startActivity(new Intent(MainActivity.this,TipDialog.class).putExtra("url",download_url));
                       }else {
                           //isshowwap=1才更新
                       }

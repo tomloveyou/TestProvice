@@ -127,7 +127,7 @@ public class TipDialog extends AppCompatActivity implements View.OnClickListener
             public void run() {
                 // TODO Auto-generated method stub
                 try {
-                    URL url = new URL(apkUrl);
+                    URL url = new URL(getIntent().getStringExtra("url"));
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.connect();
 
