@@ -1,0 +1,9 @@
+<resources>
+
+
+    <style name="DialogTheme" parent="@style/Theme.AppCompat.DayNight.Dialog">
+        <item name="android:dialogTitle">null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowCloseOnTouchOutside">false</item> //是否可以点击view外区域
+    </style>
+</resources>
